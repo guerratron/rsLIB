@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="rsLIB - Dinamic Scripts Loader - by Juanjo Guerra Haba" />
+		<title>Ejemplo del Cargador Dinámico de Scripts 'rsLIB' - by GuerraTron</title>
+		<link rel="icon" href="favicon.ico" type="image/x-icon" />
+		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+		<!-- rsLIB BEGIN:: 
+		El cargador debe tener como id="rsLIB". Establece un objeto global llamado 'RSLIB'
+		En el interior de la etiqueta 'script' pueden almacenarse variables de configuración en formato de objeto literal.
+		En concreto interesan las siguientes:
+		{
+			/** NOMBRE DE LA LIBRERÍA */
+			"nameLIB": "PolyArea",
+			/** RUTA A LA LIBRERÍA (DESDE EL HTML LLAMADOR) */
+			"pathToLIB": "./scripts/PolyArea/",
+			/** SCRIPTS A CARGAR DE LA LIBRERÍA */
+			"scripts": ["./scripts/PolyArea/PolyArea.js",
+									"./scripts/PolyArea/css/polyArea.css",
+									"./scripts/PolyArea/PolyArea.js"]	//EL ÚLTIMO NO SE CARGA PERO DETERMINA EL EVENTO onComplete(..)
+		}
+		Si se necesitase emplear alguna variable o ejecutar alguna función de la librería, debe hacerse 
+		en el interior del evento RSLIB.onComplete(callback) pasándole una función a modo de callback.
+		<script id="rsLIB_ID" class="rsLIB_CLASS" type="text/javascript" src="./rsLIB.js"> -->
+		<script id="rsLIB_ID" class="rsLIB_CLASS" type="text/javascript" src="./rsLIB.min.js">
+				//OPTIONS rsLIB
+				{
+					/** NOMBRE DE LA LIBRERÍA */
+					nameLIB: "exampleLIB",
+					/** RUTA A LA LIBRERÍA (DESDE EL HTML LLAMADOR) */
+					pathToLIB: "./exampleLIB/",
+					/** SCRIPTS A CARGAR DE LA LIBRERÍA */
+					scripts: ["./exampleLIB/lib/exOpts.js",
+										"./exampleLIB/exampleLIB.js",
+										"./exampleLIB/json/exampleLIB.json",
+										"./exampleLIB/css/exampleLIB.css",
+										"./exampleLIB/exampleLIB.js"]
+				}
+		</script>
+		<!-- rsLIB END -->
+		
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded', 
+            function DOMContentLoaded(){
+							//document.getElementById("container").innerHTML += "<br /><hr />" + exampleLIB.tag + " ... " + exampleLIB.conf(exOpts) +"<hr />";
+							/*si se necesitase emplear alguna variable o ejecutar alguna función de la librería, debe hacerse 
+							en el interior del evento RSLIB.onComplete(callback) pasándole una función a modo de callback.*/
+							rsLIB.onComplete(
+									function (){	//CALLBACK
+										document.getElementById("container").innerHTML += "<br /><hr />" + exampleLIB.tag + " ... " + exampleLIB.conf(exOpts) +"<hr />";
+									}  //FIN DE CALLBACK
+							); //FIN DE REQUIRE-COMPLETED
+            } //FIN DE HANDLER DOMContentLoaded
+			, false); //FIN DE EVENT DOMContentLoaded
+			
+			window.addEventListener("load", function(){
+						rsLIB.onComplete( 
+								function (){	//CALLBACK
+										document.getElementById("container").innerHTML += '<br /><small style="color:lightBlue;">Language: ' + objLanguage.language +"</small>";
+								}
+						);
+			}, false);
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<h4>THIS IS LOADED BY <i>rsLIB</i> <sup>&copy;</sup> -- <sub><small>by <a href="mailto:dinertron@gmail.com">GuerraTron</a></small></sub></h4>
+			<img src="./img/rsLIB_logo.png" /> 
+		</div>
+	</body>
+</html>

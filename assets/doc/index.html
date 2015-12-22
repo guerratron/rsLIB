@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Home</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Home</h1>
+
+    
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><p><script type="text/javascript"> document.getElementsByTagName('title')[0].innerHTML='rsLIB - by GuerraTron'; </script></p>
+<style type="text/css">
+  body{text-align:justify;}
+    #intro{background:whiteSmoke; color:#333333; border-radius:8px; box-shadow:2px 2px 4px darkGray; padding:15px;}
+    #intro span{float:left; font-size:xx-large; font-weight:bolder; color:blue;}
+    #intro sub{float:left; color:maroon; margin:6px;}
+    #intro img{float:right;}
+    #intro blockquote{clear:both;}
+    #intro #torotron{float:none; max-height:1em;}
+    .PD{background:#EEEEEE; padding:4px; border-radius:6px; box-shadow: 2px 2px 4px darkGray;}
+    .comment{background:cornSilk; padding:14px; border-radius:6px; box-shadow: 2px 2px 4px navajoWhite;}
+</style>
+
+<div id="intro">
+<span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
+    <img src="img/rsLIB_logo.png" alt="logo rsLIB" title="rsLIB" />
+    <blockquote>
+    It Inserts the linked-scripts parameters in the HTML-HEAD section DYNAMIC and SYNCHRONOUSLY, but without AJAX.<br>    It loads Scripts (js, json, ...) and even style sheets (CSS).
+    <blockquote>
+    <cite><small>AutoLoader File for javascript Libraries (multi-scripts).<br />
+    copyright @ 2015 - Juan José Guerra Haba <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#100;&#105;&#110;&#x65;&#x72;&#x74;&#114;&#x6f;&#110;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;">&#100;&#105;&#110;&#x65;&#x72;&#x74;&#114;&#x6f;&#110;&#64;&#x67;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#x6f;&#x6d;</a> <img id="torotron" src="img/torotron_logo.png" alt="torotron" title="guerraTron" /><br /> 
+    License: Free. GPL.v3</small></cite>
+    </blockquote>
+    </blockquote>
+</div>
+
+<h2>DESCRIPTION</h2><p>'<strong>rsLIB</strong>' o <strong>RSLIB</strong> is the acronym of 'require async library' and a scripts library autoloader . It loads Scripts (js, json, ...) and even style sheets (CSS) DINAMICALLY and SYNCHRONOUS.  </p>
+<p>Return an GLOBAL object '<strong>rsLIB</strong>' for use in an immediate resource (variable, method, object ...) from library. This object contains some interesting properties and methods, among others, a very useful event '<em>onComplete (..)</em>' to pass a callback.</p>
+<p>You only need to use it if you do use a resource immediately (variable, method, object ...) from library.</p>
+<h2>OPTIONS</h2><p>'<strong>rsLIB</strong>' works with options and these are expected as an object embedded within the tag '<em>script</em>' of the own call to this charger. These options should appear as follows:</p>
+<ol>
+<li><strong>nameLIB</strong>: name of the library to load</li>
+<li><strong>pathToLIB</strong>: path (relative or absolute) to the library directory with respect to html caller.</li>
+<li><strong>scripts</strong>: An array with the path relative to each script file you want to load. The last element of the array will not be charged, which is only indicates the main on which to launch the 'onComplete (..)' method.</li>
+</ol>
+<p>The call in the HTML Head might be:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script id=&quot;rsLIB_ID&quot; class=&quot;rsLIB_CLASS&quot; type=&quot;text/javascript&quot; src=&quot;./scripts/rsLIB.js&quot;>
+  /* Anonymous object for options  */
+    {
+        nameLIB:   &quot;PolyArea&quot;,
+        pathToLIB: &quot;./scripts/PolyArea/&quot;,
+        scripts:   [&quot;./scripts/PolyArea/PolyArea.js&quot;,
+                        &quot;./scripts/PolyArea/css/polyArea.css&quot;,
+                        &quot;./scripts/PolyArea/PolyArea.js&quot;] //The latter will not be loaded, only determines the event 'onComplete (..)'
+  }
+&lt;/script></code></pre><p>The MAGIC here is produced in this way to pass options, on the other hand, the options will be destroyed once used to help increase the SECURITY or ABSTRACTION layer.</p>
+<h2>FEATURES</h2><ol>
+<li>OOP Philosophy. </li>
+<li>EcmaScript-6 Features  as &quot;use-strict&quot;. </li>
+<li>Abstraction and security through defined Closures and destruction options. </li>
+<li>Simplification and minified code. (just over 2 kilobytes) </li>
+<li>A single file.</li>
+</ol>
+<h2>ADVANTAGES</h2><p>The main advantage is obvious, an entire group of scripts to load is implemented in a single options object, avoiding the annoying inclusion line-to-line for each tag in <em>HTML</em>, already the loader detect what type of file you are trying LINKAR (<em>css, js, json</em>) and generates the corresponding label.</p>
+<h2>DISADVANTAGES</h2><ol>
+<li>Well, the main disadvantage (in some libraries or frameworks is not) is that the burden is necessarily produced in synchronous mode, that is, loading is script-to-script and this implies a possible reduction in execution speed.</li>
+<li>Obviously standard tags for all loaded scripts are generated, there is no possibility to particularize with additional attributes. (async, data-main, lang, ...)<p class="PD">(P.D.: Some libraries NEED synchronous mode for proper operation)</p>
+
+</li>
+</ol>
+<h2>FUTURE IMPROVEMENTS (TO-DO)</h2><ol>
+<li>Using AJAX to provide load asynchronously.</li>
+<li>Improve and include new options.</li>
+<li>Using JSON for options. 
+<p class="PD">P.D.: Although used internally 'eval' on controlled manner, in following updates  it will be studied how to replace 'eval' by 'JSON.parse' or 'JSON.stringify'<p></li>
+</ol>
+<h2>CROSS-BROWSER</h2><p>(<em>possibility of some external FOREING effects</em>)  </p>
+<p>Although it has made an effort to charger works cross-browser, DYNAMIC loading is something NO-STANDARD employing an UNORTHODOX way and can cause different behaviors in certain browsers.</p>
+<blockquote class="comment">
+    <h6>Reasons (tentative explanation):</h6>
+    When produced a modification of <b>DOM</b> at the same time it is building its ELEMENT TREE incurred in a kind 
+    of contradiction is solved differently in different browsers.<br>    I think this occurs because the <i>INTERNAL BROWSERS ARCHITECTURE</i> and type of engine used is very different; 
+    It is complicated but has to do with the flow <i>READER-PARSER-INTERPRETATION</i> of files and JavaScript code and 
+    <i>CREATION-MODIFICATION</i> DOM tree, and can cause the execution of scripts in a disorderly way (it has been 
+    observed in certain versions of <i>IE</i>), even giving different implementation priorities by type of script 
+    (script-in-line and linked), which in some cases can cause the browser to proceed with the reading of a piece of 
+    code in-line back before another set to a external script that contains the variables used.
+</blockquote>
+
+<h2>'onComplete( callback )' EVENT</h2><p>For these reasons the 'cross-browser' section has been implemented 'onComplete (..)' method to wait to use variables which are defined immediately.
+To avoid these adverse effects and provide a compatible form for all whatever DIRECT CODE that must run in the CALLBACK function as a parameter. For Example:</p>
+<pre class="prettyprint source lang-javascript"><code>/** An event callback function which include with immediate code
+    * @param callback */
+rsLIB.onComplete( function(){
+        //code to execute when the scripts are loaded (the main)
+});</code></pre><h2>THE 'rsLIB' OBJECT</h2><p>Once interpreted the file '<em>rsLIB.js </em>', it create the global variable '<strong>rsLIB</strong>' representing the <em>LOADER</em> object. The following members is created:</p>
+<ol>
+<li>Options: the  complete object detected as embedded options.</li>
+<li>LIB name: name of the library to load.</li>
+<li>PathToLIB: the path to the library, based on the situation of HTML caller.</li>
+<li>Scripts: the array of scripts to load the library.</li>
+<li>Get: get properties of embedded object.</li>
+<li>Isset: utility method to check whether a variable is undefined.</li>
+<li>OnComplete (..): The event method to which can be passed a 'callback' function as the only parameter.</li>
+</ol>
+<hr>
+<p> <strong>AUTHOR</strong>: <code>I hope I can be of use to someone as it has been for me. In this case it would be appreciated comment use in email or suggestions for future improvements.</code>
+ PLEASE, KEEP CREDIT AND LINKS. THANKS !</p>
+<p> <code>... And as he said 'George Lucas': that the force be with you. !!</code></p></article>
+    </section>
+
+
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Tutorials</h3><ul><li><a href="tutorial-tuto_rsLIB.en.html">rsLIB Tutorial</a></li></ul><h3>Global</h3><ul><li><a href="global.html#get">get</a></li><li><a href="global.html#isset">isset</a></li><li><a href="global.html#nameLIB">nameLIB</a></li><li><a href="global.html#onComplete">onComplete</a></li><li><a href="global.html#options">options</a></li><li><a href="global.html#pathToLIB">pathToLIB</a></li><li><a href="global.html#rsLIB">rsLIB</a></li><li><a href="global.html#scripts">scripts</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Tue Dec 22 2015 17:32:42 GMT+0100 (Hora estándar romance)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

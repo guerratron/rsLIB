@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="rsLIB Tutorial - Dinamic Scripts Loader - by Juanjo Guerra Haba" />
+    <title>'rsLIB' Tutorial - by GuerraTron</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href="./css/tuto.css" media="screen" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+
+    </style>
+  </head>
+  
+  <body>
+
+    <div id="divTotal"><!-- BEGIN:: TOTAL DIV -->
+    
+      <div id="intro">
+        <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
+        <p class="clearfix"></p>
+        <img src="img/rsLIB_logo_225.png" alt="logo rsLIB" title="rsLIB" />
+        <blockquote>
+          This is a Loader which insert the linked-scripts parameters in the HTML-HEAD section SYNCHRONOUSLY, but without AJAX.<br />
+          It loads Scripts (js, json, ...) and even style sheets (CSS) DINAMICALLY and SYNCHRONOUS. 
+          <blockquote>
+            <cite><small>File autoLoader for javascript Libraries (multi-scripts).<br />
+            copyright @ 2015 - Juan José Guerra Haba &lt;dinertron@gmail.com&gt; <img id="torotron" src="img/torotron_logo.png" alt="torotron" title="guerraTron" /><br /> 
+            License: Free. GPL.v3</small></cite>
+          </blockquote>
+        </blockquote>
+        <p class="clearfix"></p>
+      </div>
+      
+      <div id="container"><!-- BEGIN:: CONTAINER DIV -->
+        <h1>rsLIB Tutorial</h1>
+        <ul id="TOC">TOC
+          <li><a href="#cargarScript" title="cargar el script">Load</a></li>
+          <li><a href="#opciones" title="objeto Javascript">Options</a></li>
+          <li><a href="#codigo" title="codigo javascript">Code</a></li>
+          <li><a href="#onComplete" title="evento onComplete()">onComplete(..) event</a></li>
+          <li><a href="#objRSLIB" title="objeto objRSLIB">RSLIB obj</a></li>
+        </ul>
+        <div id="presentacion" name="presentacion">
+          <p>Of course the first step starts loading the script. We use the tag <b>HTML</b> <i>&lt; script ... / &gt;</i> in the <b>Head</b> page.</p>
+          <p>The script handles dynamically import scripts / libraries listed in the <a href="#opciones" title="objeto Javascript">options</a> and, once completed, built a GLOBAL object <b>rsLIB</b>, which contains some interesting properties and methods, among others, a very useful event <b>onComplete (..)</b> to pass a callback. <span class="PD">You only need to use it if you do use a resource immediately (variable, method, object ...) from loaded library.</span></p>
+        </div>
+
+        <div id="cargarScript" name="cargarScript">
+          <h3>Load the Script:</h3>
+          <p>We import the script in the <i>Head</i> page area, for example:<br />
+              <code class="html">
+                <span>&emsp;&lt;<i class="meth">script</i> id=<i class="txt">"rsLIB_ID"</i> class=<i class="txt">"rsLIB_CLASS"</i> type=<i class="txt">"text/javascript"</i> src=<i class="txt">"./scripts/rsLIB.js"</i>&gt; <b><i class="mini_obj">{JAVASCRIPT OPTIONS}</i></b> &lt;/<i class="meth">script</i>&gt;</span>
+              </code>
+          </p>
+          <p>The most interesting thing here is the area marked as braces <b>{JAVASCRIPT OPTIONS}</b>. Well, this is the way in which the script will pick the passed option, which must be a <b>object Javascript</b>.</p>
+        </div>
+
+        <div id="opciones" name="opciones">
+          <h3>Options:</h3>
+          <p>As already mentioned, <b>rsLIB</b> works with options and these are expected as an object embedded within the tag <i>script</i> of the own call to this loader. These options should appear as follows:</p>
+          <ul>
+            <li><b>nameLIB</b>: name of the library to load.</li>
+            <li><b>pathToLIB</b>: path (relative or absolute) to the library directory with respect to html caller.</li>
+            <li><b>scripts</b>: An array with the path relative to each script file you want to load. <span class="resaltar">The last element of the array will not be charged, which is only indicates the main on which to launch the 'onComplete (..)' method.</span></li>
+          </ul>
+          <p>The call in the HTML Head might be:<br />
+              <code>
+                  <span>&emsp;<i class="comment">/* Anonymous object for options  */</i></span>
+                  <span>&emsp;{</span>
+                  <span>&emsp;&emsp;<i class="prop">nameLIB</i>:&emsp; <i class="txt">"PolyArea"</i>,</span>
+                  <span>&emsp;&emsp;<i class="prop">pathToLIB</i>:&emsp;<i class="txt">"./scripts/PolyArea/"</i>,</span>
+                  <span>&emsp;&emsp;<i class="prop">scripts</i>:&emsp;&emsp; [<i class="txt">"./scripts/PolyArea/PolyArea.js"</i>,</span>
+                  <span>&emsp;&emsp;&emsp; &emsp;&emsp;&emsp;&emsp;<i class="txt">"./scripts/PolyArea/css/polyArea.css"</i>,</span>
+                  <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<i class="txt">"./scripts/PolyArea/PolyArea.js"</i>] <i class="comment">//The latter will not be loaded, only determines the event 'onComplete (..)'</i></span>
+                  <span>&emsp;}</span>
+              </code>
+          </p>
+          <p class="alert">For reasons of <b>safety</b> the options will be destroyed after use, leaving no trace in the HTML generated, helping to increase the SECURITY layer and ABSTRACTION.</p>
+        </div>
+        
+        <div id="codigo" name="codigo">
+          <h3>Code:</h3>
+          <p>If you need to use a variable or execute any library function immediately, it should be within the event <b>rsLIB.onComplete(callback)</b> passing a function as a callback.<br />
+          For example, if you need to use the variable <i class="var">objLanguage</i> it which is defined in an external script imported by this loader, would::</p>
+            <code>
+               <span>&emsp;<i class="mini_obj">window</i>.<i class="mini_meth">addEventListener</i>(<i class="txt">"load"</i>, </span>
+               <span>&emsp;&emsp;<i class="func">function</i> <i class="mini_nfunc">pageLoaded</i>(){</span>
+               <span>&emsp;&emsp;&emsp;<i class="comment">/* rsLIB.onComplete(callback) function passing a function as a callback. */</i></span>
+               <span>&emsp;&emsp;&emsp;<i class="obj">rsLIB</i>.<i class="meth">onComplete</i>(</span>
+               <span>&emsp;&emsp;&emsp;&emsp;<i class="func">function</i> <i class="nfunc">callBack01</i>(){  <i class="comment">//callback</i></span>
+               <span>&emsp;&emsp;&emsp;&emsp;&emsp;<i class="mini_obj">document</i>.<i class="mini_meth">getElementById</i>(<i class="txt">"container"</i>).<i class="prop">innerHTML</i> = <i class="txt">"Language: "</i> + <i class="var">objLanguage</i>.<i class="prop">language </i>;</span>
+               <span>&emsp;&emsp;&emsp;&emsp;}</span>
+               <span>&emsp;&emsp;&emsp;);</span>
+               <span>&emsp;&emsp;}</span>
+               <span>&emsp;, <i class="bool">false</i>);</span>
+            </code>
+          <p class="alert">DYNAMIC loading is something NO-STANDARD employing an UNORTHODOX way and can cause different behaviors in certain browsers ...
+          <small>When produced a modification of <b>DOM</b> at the same time it is building its <i>ELEMENT TREE</i> incurred in a kind of contradiction is solved differently in different browsers. </small></p>
+        </div>
+     
+        <p class="PD">P.D.: Some libraries NEED synchronous mode for proper operation)</p>
+
+        <div id="onComplete" name="onComplete">
+          <h3>'onComplete( callback )' EVENT:</h3>
+          <p>This method has been implemented to wait to use variables which were defined a immediately manner. These variables must be executed in the CALLBACK function passed as a parameter. For Example:</p>
+            <code>
+              <span>&emsp;<i class="comment">/** An event callback function which include with the immediate code</i></span>
+              <span>&emsp;  <i class="comment">* @param callback */</i></span>
+              <span>&emsp;&emsp;<i class="obj">rsLIB</i>.<i class="meth">onComplete</i>( <i class="func">function</i> <i class="nfunc">callBack</i>(){</span>
+              <span>&emsp;&emsp;&emsp;<i class="comment">//code to execute when the scripts are loaded (the main)</i></span>
+              <span>&emsp;&emsp;});</span>
+            </code>
+        </div>
+        
+        <div id="objRSLIB" name="objRSLIB">
+          <h3>THE 'rsLIB' OBJECT:</h3>
+          <p>Once interpreted the file <i>rsLIB.js</i>, it create the global variable <b>rsLIB'</b> representing the <i>LOADER</i> object. The following members are created:</p>
+          <ul>
+            <li><b>options</b>: the  complete object detected as embedded options.</li>
+            <li><b>nameLIB</b>: name of the library to load.</li>
+            <li><b>pathToLIB</b>:  the path to the library, based on the situation of HTML caller.</li>
+            <li><b>scripts</b>: the array of scripts to load the library.</li>
+            <li><b>get</b>: get properties of embedded object.</li>
+            <li><b>isset</b>: utility method to check whether a variable is undefined.</li>
+            <li><b>onComplete(..)</b>: The event method to which can be passed a 'callback' function as the only parameter.</li>
+          </ul>
+        </div>
+      </div><!-- END:: CONTAINER DIV -->
+
+      <div id="footer" name="footer">
+        <p><b>AUTHOR</b> : I hope I can be of use to someone as it has been for me. In this case it would be appreciated comment use in email or suggestions for future improvements. (<a href="mailto:dinertron@gmail.com">guerraTron</a>) <br />
+          <span style='color:#DDDDDD;'>PLEASE, KEEP CREDIT AND LINKS. THANKS !</span></p>
+        <p><i><span style='font-family:"Century Gothic","sans-serif"'>&nbsp;... And as he said 'George Lucas': that the force be with you. !!</span></i></p>
+      </div>
+      
+    </div><!-- END:: TOTAL DIV -->
+
+  </body>
+</html>

@@ -1,0 +1,5 @@
+'jsDOC' :: CONSTRUCCIÓN DE LA DOCUMENTACIÓN:
+
+ATAJO MEDIANTE 'conf.json' EJECUTABLE:
+
+C:\Users\Paula\workspace_LUNA\PolyArea\scripts\rsLIB-en>jsdoc -c C:\Users\Paula\workspace_LUNA\PolyArea\scripts\rsLIB-en\jsdoc.conf.en.json

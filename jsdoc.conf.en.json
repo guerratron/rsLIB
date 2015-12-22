@@ -1,0 +1,41 @@
+{
+    "package": { "name" : "rsLIB/rsLIB-en",
+      "version" : "1.0.0",
+      "description" : "Dynamic Scripts Library AutoLoader",
+      "main" : "rsLIB.js"
+    },
+		"tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "source": {
+        "include": [ "rsLIB.js" ],
+        "exclude": [ "assets/help/*.*",
+                     "assets/doc/*.*",
+										 "assets/tutorial/*.*" ],
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": ["plugins/markdown",
+		            "plugins/summarize"],
+    "templates": {
+        "logoFile": "img/rsLIB_logo_225.png",
+				"systemName": "rsLIB - by GUERRATRON",
+				"cleverLinks": false,
+        "monospaceLinks": true,
+				"default": {
+					"staticFiles": {
+						"include": [
+								"assets/static"
+						]
+					}
+				}
+    },
+		"opts": {
+        "encoding": "utf8",
+        "destination": "assets/doc/",
+        "recurse": true,
+        "tutorials": "assets/tutorial",
+				"readme": "assets/help/README.md"
+    }
+}

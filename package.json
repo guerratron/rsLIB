@@ -1,0 +1,5 @@
+{ "name" : "rsLIB/rsLIB-en",
+  "version" : "1.0.0",
+  "description" : "Dynamic Scripts Library AutoLoader",
+  "main" : "rsLIB.js"
+}

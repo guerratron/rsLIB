@@ -1,0 +1,19 @@
+	#container{
+		border:1px ridge maroon;
+		border-radius:10px;
+		box-shadow: 4px 4px 6px;
+		width:60%;
+		margin:auto;
+		padding:10%;
+		background:whiteSmoke;
+		text-align:center;
+	}
+	#container img{
+		float: right;
+	}
+	#container h4 i{
+		 color:maroon; 
+		 background:lightYellow; 
+		 padding:4px; 
+		 border-radius:4px;
+	}
