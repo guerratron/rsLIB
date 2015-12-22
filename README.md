@@ -1,15 +1,4 @@
-<script type="text/javascript"> document.getElementsByTagName('title')[0].innerHTML='rsLIB - by GuerraTron'; </script>
-<style type="text/css">
-  body{text-align:justify;}
-	#intro{background:whiteSmoke; color:#333333; border-radius:8px; box-shadow:2px 2px 4px darkGray; padding:15px;}
-	#intro span{float:left; font-size:xx-large; font-weight:bolder; color:blue;}
-	#intro sub{float:left; color:maroon; margin:6px;}
-	#intro img{float:right;}
-	#intro blockquote{clear:both;}
-	#intro #torotron{float:none; max-height:1em;}
-	.PD{background:#EEEEEE; padding:4px; border-radius:6px; box-shadow: 2px 2px 4px darkGray;}
-	.comment{background:cornSilk; padding:14px; border-radius:6px; box-shadow: 2px 2px 4px navajoWhite;}
-</style>
+# rsLIB :: REQUIRE SYNC LIBRARY
 
 <div id="intro">
 <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
