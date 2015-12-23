@@ -1,5 +1,5 @@
 # rsLIB :: REQUIRE SYNC LIBRARY
-[![Download rsLIB](https://img.shields.io/sourceforge/dm/rslib-js.svg)](https://sourceforge.net/projects/rslib-js/files/latest/download)
+[![Download rsLIB](https://sourceforge.net/sflogo.php?type=8&group_id=2629568)](https://sourceforge.net/p/rslib-js/)
 
 <div id="intro">
 <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
