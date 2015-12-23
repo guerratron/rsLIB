@@ -1,4 +1,5 @@
 # rsLIB :: REQUIRE SYNC LIBRARY
+[![Download rsLIB](https://a.fsdn.com/con/app/sf-download-button)](https://sourceforge.net/projects/rslib-js/files/latest/download)
 
 <div id="intro">
 <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
