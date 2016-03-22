@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Rslib by guerratron</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Rslib</h1>
+      <h2 class="project-tagline">Dynamic Scripts Library AutoLoader</h2>
+      <a href="https://github.com/guerratron/rsLIB" class="btn">View on GitHub</a>
+      <a href="https://github.com/guerratron/rsLIB/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/guerratron/rsLIB/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="rslib--require-sync-library" class="anchor" href="#rslib--require-sync-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>rsLIB :: REQUIRE SYNC LIBRARY</h1>
+
+<p><a href="https://sourceforge.net/p/rslib-js/"><img src="https://sourceforge.net/sflogo.php?type=8&amp;group_id=2629568" alt="Download rsLIB"></a></p>
+
+<div id="intro">
+rsLIB <sub>REQUIRE SYNC LIBRARY</sub>
+    <img src="img/rsLIB_logo.png" alt="logo rsLIB" title="rsLIB">
+    <blockquote>
+    It Inserts the linked-scripts parameters in the HTML-HEAD section DYNAMIC and SYNCHRONOUSLY, but without AJAX.  
+    It loads Scripts (js, json, ...) and even style sheets (CSS).
+    <blockquote>
+    AutoLoader File for javascript Libraries (multi-scripts).<br>
+    copyright @ 2015 - Juan José Guerra Haba  <img id="torotron" src="img/torotron_logo.png" alt="torotron" title="guerraTron"><br> 
+    License: Free. GPL.v3
+    </blockquote>
+    </blockquote>
+</div>
+
+<h2>
+<a id="description" class="anchor" href="#description" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DESCRIPTION</h2>
+
+<p>'<strong>rsLIB</strong>' o <strong>RSLIB</strong> is the acronym of 'require async library' and a scripts library autoloader . It loads Scripts (js, json, ...) and even style sheets (CSS) DINAMICALLY and SYNCHRONOUS.  </p>
+
+<p>Return an GLOBAL object '<strong>rsLIB</strong>' for use in an immediate resource (variable, method, object ...) from library. This object contains some interesting properties and methods, among others, a very useful event '<em>onComplete (..)</em>' to pass a callback.</p>
+
+<p>You only need to use it if you do use a resource immediately (variable, method, object ...) from library.</p>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OPTIONS</h2>
+
+<p>'<strong>rsLIB</strong>' works with options and these are expected as an object embedded within the tag '<em>script</em>' of the own call to this charger. These options should appear as follows:</p>
+
+<ol>
+<li>
+<strong>nameLIB</strong>: name of the library to load</li>
+<li>
+<strong>pathToLIB</strong>: path (relative or absolute) to the library directory with respect to html caller.</li>
+<li>
+<strong>scripts</strong>: An array with the path relative to each script file you want to load. The last element of the array will not be charged, which is only indicates the main on which to launch the 'onComplete (..)' method.</li>
+</ol>
+
+<p>The call in the HTML Head might be:</p>
+
+<div class="highlight highlight-text-html-basic"><pre><span class="pl-s1">&lt;<span class="pl-ent">script</span> <span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>rsLIB_ID<span class="pl-pds">"</span></span> <span class="pl-e">class</span>=<span class="pl-s"><span class="pl-pds">"</span>rsLIB_CLASS<span class="pl-pds">"</span></span> <span class="pl-e">type</span>=<span class="pl-s"><span class="pl-pds">"</span>text/javascript<span class="pl-pds">"</span></span> <span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>./scripts/rsLIB.js<span class="pl-pds">"</span></span>&gt;</span>
+<span class="pl-s1">  <span class="pl-c">/* Anonymous object for options  */</span></span>
+<span class="pl-s1">    {</span>
+<span class="pl-s1">        nameLIB<span class="pl-k">:</span>   <span class="pl-s"><span class="pl-pds">"</span>PolyArea<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1">        pathToLIB<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>./scripts/PolyArea/<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1">        scripts<span class="pl-k">:</span>   [<span class="pl-s"><span class="pl-pds">"</span>./scripts/PolyArea/PolyArea.js<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1">                        <span class="pl-s"><span class="pl-pds">"</span>./scripts/PolyArea/css/polyArea.css<span class="pl-pds">"</span></span>,</span>
+<span class="pl-s1">                        <span class="pl-s"><span class="pl-pds">"</span>./scripts/PolyArea/PolyArea.js<span class="pl-pds">"</span></span>] <span class="pl-c">//The latter will not be loaded, only determines the event 'onComplete (..)'</span></span>
+<span class="pl-s1">  }</span>
+<span class="pl-s1">&lt;/<span class="pl-ent">script</span>&gt;</span></pre></div>
+
+<p>The MAGIC here is produced in this way to pass options, on the other hand, the options will be destroyed once used to help increase the SECURITY or ABSTRACTION layer.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FEATURES</h2>
+
+<ol>
+<li>OOP Philosophy. </li>
+<li>EcmaScript-6 Features  as "use-strict". </li>
+<li>Abstraction and security through defined Closures and destruction options. </li>
+<li>Simplification and minified code. (just over 2 kilobytes) </li>
+<li>A single file.</li>
+</ol>
+
+<h2>
+<a id="advantages" class="anchor" href="#advantages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ADVANTAGES</h2>
+
+<p>The main advantage is obvious, an entire group of scripts to load is implemented in a single options object, avoiding the annoying inclusion line-to-line for each tag in <em>HTML</em>, already the loader detect what type of file you are trying LINKAR (<em>css, js, json</em>) and generates the corresponding label.</p>
+
+<h2>
+<a id="disadvantages" class="anchor" href="#disadvantages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DISADVANTAGES</h2>
+
+<ol>
+<li>Well, the main disadvantage (in some libraries or frameworks is not) is that the burden is necessarily produced in synchronous mode, that is, loading is script-to-script and this implies a possible reduction in execution speed.</li>
+<li>Obviously standard tags for all loaded scripts are generated, there is no possibility to particularize with additional attributes. (async, data-main, lang, ...)
+<p>(P.D.: Some libraries NEED synchronous mode for proper operation)</p>
+</li>
+</ol>
+
+<h2>
+<a id="future-improvements-to-do" class="anchor" href="#future-improvements-to-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>FUTURE IMPROVEMENTS (TO-DO)</h2>
+
+<ol>
+<li>Using AJAX to provide load asynchronously.</li>
+<li>Improve and include new options.</li>
+<li>Using JSON for options. 
+<p>P.D.: Although used internally 'eval' on controlled manner, in following updates  it will be studied how to replace 'eval' by 'JSON.parse' or 'JSON.stringify'</p>
+<p></p>
+</li>
+</ol>
+
+<h2>
+<a id="cross-browser" class="anchor" href="#cross-browser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CROSS-BROWSER</h2>
+
+<p>(<em>possibility of some external FOREING effects</em>)  </p>
+
+<p>Although it has made an effort to charger works cross-browser, DYNAMIC loading is something NO-STANDARD employing an UNORTHODOX way and can cause different behaviors in certain browsers.</p>
+
+<blockquote>
+    <h6>
+<a id="reasons-tentative-explanation" class="anchor" href="#reasons-tentative-explanation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Reasons (tentative explanation):</h6>
+    When produced a modification of <b>DOM</b> at the same time it is building its ELEMENT TREE incurred in a kind 
+    of contradiction is solved differently in different browsers.  
+    I think this occurs because the <i>INTERNAL BROWSERS ARCHITECTURE</i> and type of engine used is very different; 
+    It is complicated but has to do with the flow <i>READER-PARSER-INTERPRETATION</i> of files and JavaScript code and 
+    <i>CREATION-MODIFICATION</i> DOM tree, and can cause the execution of scripts in a disorderly way (it has been 
+    observed in certain versions of <i>IE</i>), even giving different implementation priorities by type of script 
+    (script-in-line and linked), which in some cases can cause the browser to proceed with the reading of a piece of 
+    code in-line back before another set to a external script that contains the variables used.
+</blockquote>
+
+<h2>
+<a id="oncomplete-callback--event" class="anchor" href="#oncomplete-callback--event" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>'onComplete( callback )' EVENT</h2>
+
+<p>For these reasons the 'cross-browser' section has been implemented 'onComplete (..)' method to wait to use variables which are defined immediately.
+To avoid these adverse effects and provide a compatible form for all whatever DIRECT CODE that must run in the CALLBACK function as a parameter. For Example:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">/** An event callback function which include with immediate code</span>
+<span class="pl-c">    * <span class="pl-k">@param</span> callback */</span>
+<span class="pl-smi">rsLIB</span>.<span class="pl-en">onComplete</span>( <span class="pl-k">function</span>(){
+        <span class="pl-c">//code to execute when the scripts are loaded (the main)</span>
+});</pre></div>
+
+<h2>
+<a id="the-rslib-object" class="anchor" href="#the-rslib-object" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>THE 'rsLIB' OBJECT</h2>
+
+<p>Once interpreted the file '<em>rsLIB.js <em>', it create the global variable '__rsLIB</em></em>' representing the <em>LOADER</em> object. The following members is created:</p>
+
+<ol>
+<li>Options: the  complete object detected as embedded options.</li>
+<li>LIB name: name of the library to load.</li>
+<li>PathToLIB: the path to the library, based on the situation of HTML caller.</li>
+<li>Scripts: the array of scripts to load the library.</li>
+<li>Get: get properties of embedded object.</li>
+<li>Isset: utility method to check whether a variable is undefined.</li>
+<li>
+<p>OnComplete (..): The event method to which can be passed a 'callback' function as the only parameter.</p>
+
+<hr>
+
+<p><strong>AUTHOR</strong>: <code>I hope I can be of use to someone as it has been for me. In this case it would be appreciated comment use in email or suggestions for future improvements.</code>
+PLEASE, KEEP CREDIT AND LINKS. THANKS !</p>
+
+<p><code>... And as he said 'George Lucas': that the force be with you. !!</code></p>
+</li>
+</ol>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/guerratron/rsLIB">Rslib</a> is maintained by <a href="https://github.com/guerratron">guerratron</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
