@@ -1,11 +1,8 @@
 # rsLIB :: REQUIRE SYNC LIBRARY
-[![Download rsLIB](https://sourceforge.net/sflogo.php?type=8&group_id=2629568)](https://sourceforge.net/p/rslib-js/)
-
+[![Download rsLIB](https://sourceforge.net/sflogo.php?type=8&group_id=2629568)](https://sourceforge.net/p/rslib-js/)  
+[![rslib logo](img/rsLIB_logo.png "rsLIB GitHub page")](http://guerratron.github.io/rsLIB "rsLIB page")
 <div id="intro">
-[![rslib logo](img/rsLIB_logo.png "rsLIB GitHub page")](http://guerratron.github.io/rsLIB "rsLIB page")  
-
 <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
-	<img src="img/rsLIB_logo.png" alt="logo rsLIB" title="rsLIB" />
 	<blockquote>
 	It Inserts the linked-scripts parameters in the HTML-HEAD section DYNAMIC and SYNCHRONOUSLY, but without AJAX.  
 	It loads Scripts (js, json, ...) and even style sheets (CSS).
