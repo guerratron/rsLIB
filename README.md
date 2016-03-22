@@ -2,6 +2,8 @@
 [![Download rsLIB](https://sourceforge.net/sflogo.php?type=8&group_id=2629568)](https://sourceforge.net/p/rslib-js/)
 
 <div id="intro">
+[![rslib logo](img/rsLIB_logo.png "rsLIB GitHub page")](http://guerratron.github.io/rsLIB "rsLIB page")  
+
 <span>rsLIB</span> <sub>REQUIRE SYNC LIBRARY</sub>
 	<img src="img/rsLIB_logo.png" alt="logo rsLIB" title="rsLIB" />
 	<blockquote>
